@@ -436,4 +436,12 @@
     </profile>
   </profiles>
 
+  <distributionManagement>
+      <snapshotRepository>
+          <id>snapshots</id>
+          <name>a0etclnb4i7yf-artifactory-primary-0-snapshots</name>
+          <url>https://jeromebaude.jfrog.io/artifactory/petclinic-libs-snapshot</url>
+      </snapshotRepository>
+  </distributionManagement>
+
 </project>
