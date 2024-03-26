@@ -48,38 +48,38 @@ jobs:
           # Publish build info
           jf rt bp
 
-      - name: Set Environment Variables
-        run: |
-          echo "::set-env name=repository::$(echo ${GITHUB_REF#refs/heads/} | sed 's/\//_/g')"
-          echo $repository          
+#      - name: Set Environment Variables
+#        run: |
+#          echo "::set-env name=repository::$(echo ${GITHUB_REF#refs/heads/} | sed 's/\//_/g')"
+#          echo $repository          
 
 
-      # if pushed from a feature branch, should create a proper repository in artifactory for that  
-      - name: Feature Branch Repository Creation
-        run: |
-          jf rt rc templates/local-repo-template.json --vars key1=$repository
-          jf rt rc templates/remote-repo-template.json --vars key1=$repository
-          jf rt rc templates/virtual-repo-template.json --vars key1=$repository
+ #     # if pushed from a feature branch, should create a proper repository in artifactory for that  
+ #     - name: Feature Branch Repository Creation
+ #       run: |
+ #         jf rt rc templates/local-repo-template.json --vars key1=$repository
+ #         jf rt rc templates/remote-repo-template.json --vars key1=$repository
+ #         jf rt rc templates/virtual-repo-template.json --vars key1=$repository
  
  
-       - if: always()   
-        name: Feature Branch Repository Update
-        run: |
-          echo "::set-env name=repository::$(echo ${GITHUB_REF#refs/heads/} | sed 's/\//_/g')"
-          jf mvnc --repo-resolve-releases=auto-cli-virtual-$repository --repo-resolve-snapshots=auto-cli-virtual-$repository --repo-deploy-releases=auto-cli-virtual-$repository --repo-deploy-snapshots=auto-cli-virtual-$repository
+  #     - if: always()   
+  #      name: Feature Branch Repository Update
+  #      run: |
+  #        echo "::set-env name=repository::$(echo ${GITHUB_REF#refs/heads/} | sed 's/\//_/g')"
+  #        jf mvnc --repo-resolve-releases=auto-cli-virtual-$repository --repo-resolve-snapshots=auto-cli-virtual-$repository --repo-deploy-releases=auto-cli-virtual-$repository --repo-deploy-snapshots=auto-cli-virtual-$repository
 
 
-      - if: always()
-        name: Build & Deploy
-        run: | 
-          cd maths && jf mvn clean install
+  #    - if: always()
+  #      name: Build & Deploy
+  #      run: | 
+  #        cd maths && jf mvn clean install
         
-      - if: always() 
-        name: Publish Build Information
-        run: |
-          # Collect environment variables for the build
-          jf rt bce
-          # Collect VCS details from git and add them to the build
-          jf rt bag
-          # Publish build info
-          jf rt bp       
+  #    - if: always() 
+  #      name: Publish Build Information
+  #      run: |
+  #        # Collect environment variables for the build
+  #        jf rt bce
+  #        # Collect VCS details from git and add them to the build
+  #        jf rt bag
+  #        # Publish build info
+  #        jf rt bp       
