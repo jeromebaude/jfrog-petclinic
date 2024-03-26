@@ -86,16 +86,14 @@ jobs:
           servers: >
             [
               {
-                "id": "some-id",
-                "username": "${env.USER}",
-                "password": "${env.PASS}",
-                "configuration": {
-                  "httpConfiguration": {
-                    "all": {
-                      "usePreemptive": "true"
-                    }
-                  }
-                }
+                "id": "central",
+                "username": "${{ secrets.JF_USER }}",
+                "password": "${{ secrets.JF_PASSWORD }}"
+              },
+              {
+                "id": "snapshots",
+                "username": "${{ secrets.JF_USER }}",
+                "password": "${{ secrets.JF_PASSWORD }}"
               }
             ] 
 
