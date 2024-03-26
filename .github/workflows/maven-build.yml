@@ -49,7 +49,7 @@ jobs:
           jf rt bp
 
       - name: Build with Maven
-        run: mmvn clean install
+        run: mvn clean install
         
       - name: Deploy to Artifactory
         run: |
