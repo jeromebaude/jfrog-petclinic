@@ -52,7 +52,7 @@ jobs:
         uses: whelk-io/maven-settings-xml-action@v22
         with:
           repositories: '[{ "id": "central", "url": "https://jeromebaude.jfrog.io/artifactory/petclinic-libs-release" }]'
-          plugin_repositories: '[{ "id": "central", "url": https://jeromebaude.jfrog.io/artifactory/petclinic-libs-release" }]'
+          plugin_repositories: '[{ "id": "central", "url": "https://jeromebaude.jfrog.io/artifactory/petclinic-libs-release" }]'
           servers: '[{ "id": "central", "username": "${{ secrets.JF_USER }}", "password": "${{ secrets.JF_PASSWORD }}" }]'        
  
 #     - name: Build with Maven and deploy to Artifactory
