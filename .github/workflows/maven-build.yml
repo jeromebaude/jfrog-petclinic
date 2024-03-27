@@ -50,68 +50,9 @@ jobs:
 
       - name: Setup Maven settings.xml
         uses: whelk-io/maven-settings-xml-action@v22     
-#        with:
-#          repositories: >
-#            [
-#              {
-#                "id": "central",
-#                "name": "petclinic-libs-release",
-#                "url": "https://jeromebaude.jfrog.io/artifactory/petclinic-libs-release",
-#                "releases": {
-#                  "enabled": "true",
-#                  "updatePolicy": "always",
-#                  "checksumPolicy": "fail"
-#                },
-#                "snapshots": {
-#                  "enabled": "false",
-#                  "updatePolicy": "always",
-#                  "checksumPolicy": "fail"
-#                }
-#              }
-#            ]        
-#          plugin_repositories: >
-#            [
-#              {
-#                "id": "central",
-#                "name": "petclinic-libs-release",
-#                "url": "https://jeromebaude.jfrog.io/artifactory/petclinic-libs-release",
-#                "releases": {
-#                  "enabled": "true"
-#                },
-#                "snapshots": {
-#                  "enabled": "false"
-#                }
-#              }
-#            ]
-#          servers: >
-#            [
-#              {
-#                "id": "central",
-#                "username": "${{ secrets.JF_USER }}",
-#                "password": "${{ secrets.JF_PASSWORD }}"
-#              },
-#              {
-#                "id": "snapshots",
-#                "username": "${{ secrets.JF_USER }}",
-#                "password": "${{ secrets.JF_PASSWORD }}"
-#              }
-#            ] 
-
-#          profiles: >
-#            [
-#              {
-#                "id": "artifactory"
-#              }
-#            ]
-#          active_profiles: >
-#            [
-#              "artifactory"
-#            ]
-#          output_file: .m2/settings.xml
-
         with:
-          repositories: '[{ "id": "snapshots", "url": "https://jeromebaude.jfrog.io/artifactory/petclinic-libs-snapshot" }]'
-          plugin_repositories: '[{ "id": "snapshots", "url": "https://jeromebaude.jfrog.io/artifactory/petclinic-libs-snapshot" }]'
+          repositories: '[{ "id": "snapshots", "url": "${{ secrets.JF_URL }}/artifactory/petclinic-libs-snapshot" }]'
+          plugin_repositories: '[{ "id": "snapshots", "url": "${{ secrets.JF_URL }}/artifactory/petclinic-libs-snapshot" }]'
           servers: '[{ "id": "snapshots", "username": "${{ secrets.JF_USER }}", "password": "${{ secrets.JF_PASSWORD }}" }]'        
  
       - name: Build with Maven
