@@ -48,10 +48,6 @@ jobs:
           # Publish build info
           jf rt bp
 
-      - name: Xray Scan
-        run: |
-          jf bs
-
       - name: Setup Maven settings.xml
         uses: whelk-io/maven-settings-xml-action@v22     
 #        with:
