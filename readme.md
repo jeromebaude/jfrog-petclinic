@@ -57,6 +57,7 @@ mvn clean deploy
 
 Artifactory stores all artifacts: the dependencies required to build your application, the binary and the Docker image you build.
 Let's upload a Docker image and scan it with JFrog Xray. 
+(I am here using JFrog  Cloud Platform. My URL is https://jeromebaude.jfrog.io)
 
 First, we tag our local image according to our Artifactory repo name:
 ```bash
