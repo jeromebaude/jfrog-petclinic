@@ -21,6 +21,7 @@ You can then access the Petclinic at <http://localhost:8080/>
 ## Build a runnable docker image
 
 We created a simple Dockerfile based on [eclipse-temurin](https://hub.docker.com/_/eclipse-temurin)
+Here is the [Dockerfile](https://github.com/jeromebaude/jfrog-petclinic/blob/main/Dockerfile)
 
 ```bash
 docker build -t jeromebaude/petclinic:v1 .
@@ -55,7 +56,7 @@ mvn clean deploy
 ## Store and scan a docker image with Artifactory
 
 Artifactory stores all artifacts: the dependencies required to build your application, the binary and the Docker image you build.
-Let's upload a Docker image and Scan it with JFrog Xray. 
+Let's upload a Docker image and scan it with JFrog Xray. 
 
 First, we tag our local image according to our Artifactory repo name:
 ```bash
@@ -69,7 +70,7 @@ docker login -u jerome.baude@gmail.com jeromebaude.jfrog.io
 docker push jeromebaude.jfrog.io/petclinic-docker/jeromebaude/petclinic:v1
 ```
 
-Then we go to the Artifactory console Xray > Scan List > petclinic-docker-local. We click on ...> Export Data. We download the report in zip file containing all json files. (see Docker_jeromebaude-petclinic_version-v1_jerome.baude@gmail.com_2024-03-28.zip)
+Then we go to the Artifactory console Xray > Scan List > petclinic-docker-local. We click on ...> Export Data. We download the report in a zip file containing all json files. (see Docker_jeromebaude-petclinic_version-v1_jerome.baude@gmail.com_2024-03-28.zip)
 
 ## Automate things through a CI workflow
 
@@ -78,7 +79,7 @@ We are going to use GitHub Actions as a CI/CD tool
 
 The yaml file describing the workflow is [here](https://github.com/jeromebaude/jfrog-petclinic/blob/main/.github/workflows/maven-build.yml)
 
-It is pretty standard maven and docker build workflow but I want to highlight the following:
+It is a pretty standard maven and docker build workflow but I want to highlight a few things:
 - We set up JFrog CLI to collect VCS details from git and add them to the build
 - We generate the Maven settings.xml to resolve dependencies securely with Artifactory  
 - Once we build the Docker image, we login to JFrog to push the image to Artifactory
