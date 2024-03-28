@@ -83,4 +83,4 @@ The yaml file describing the workflow is [here](https://github.com/jeromebaude/j
 It is a pretty standard maven and docker build workflow but I want to highlight a few things:
 - We set up JFrog CLI to collect VCS details from git and add them to the build
 - We generate the Maven settings.xml to resolve dependencies securely with Artifactory  
-- Once we build the Docker image, we login to JFrog to push the image to Artifactory
+- Once we build the Docker image, we login to JFrog to push the image to Artifactory and scan it
