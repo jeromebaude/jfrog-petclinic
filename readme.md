@@ -10,7 +10,7 @@ The idea here is to create a CI workflow to build the sample app and a runnable 
 You can build a jar file and run it from the command line (it should work just as well with Java 17 or newer):
 
 ```bash
-git clone https://github.com/spring-projects/spring-petclinic.git
+git clone https://github.com/jeromebaude/jfrog-petclinic.git
 cd spring-petclinic
 ./mvnw package
 java -jar target/*.jar
